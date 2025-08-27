@@ -1,17 +1,8 @@
-# Ignore everything
-*
-
-# Except these folders
-!client/
-!server/
-!.gitignore
-
-
-# Still ignore the following
 node_modules/
 .env
 .vscode/
 __pycache__/
 *.pyc
 venv/
+
 scraper/
