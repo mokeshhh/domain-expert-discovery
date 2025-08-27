@@ -43,9 +43,10 @@ export default function ExpertDetail() {
 
   const isLoggedIn = !!localStorage.getItem('token');
   const userEmail = localStorage.getItem('email');
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch(`/api/experts/${id}`)
+    fetch(`${API_URL}/api/experts/${id}`)
       .then(res => {
         if (!res.ok) throw new Error('Expert not found');
         return res.json();
@@ -55,7 +56,7 @@ export default function ExpertDetail() {
         setLoading(false);
 
         if (isLoggedIn && userEmail) {
-          fetch(`/api/auth/get-saved-experts?email=${userEmail}`)
+          fetch(`${API_URL}//api/auth/get-saved-experts?email=${userEmail}`)
             .then(res => res.json())
             .then(({ savedExperts }) => {
               setIsSaved(savedExperts?.includes(data._id) || false);
@@ -100,8 +101,8 @@ export default function ExpertDetail() {
 
     try {
       const url = isSaved
-        ? '/api/auth/remove-saved-expert'
-        : '/api/auth/save-expert';
+        ? '${API_URL}/api/auth/remove-saved-expert'
+        : '${API_URL}/api/auth/save-expert';
       const res = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

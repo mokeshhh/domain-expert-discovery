@@ -15,9 +15,12 @@ const Analytics = () => {
     averageRating: 4.5
   });
   const [loading, setLoading] = useState(true);
+  const API_URL = import.meta.env.VITE_API_URL;
+  
 
   useEffect(() => {
-    fetch('/api/experts')
+    fetch(`${API_URL}/api/experts`)
+
       .then(res => res.json())
       .then(data => {
         const totalExperts = data.length;

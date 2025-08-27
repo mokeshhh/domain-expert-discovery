@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react';
 export default function ExpertsForYou({ userId }) {
   const [experts, setExperts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     if (!userId) return;
 
-    fetch(`/api/experts/recommended?userId=${userId}`)
+    fetch(`${API_URL}/api/experts/recommended?userId=${userId}`)
       .then(res => res.json())
       .then(data => {
         setExperts(data);

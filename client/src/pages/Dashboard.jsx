@@ -10,7 +10,8 @@ export default function Dashboard() {
 
   const userEmail = localStorage.getItem('email');
   const navigate = useNavigate();
-  const API_BASE_URL = import.meta.env.VITE_API_URL || '';
+  const API_URL = import.meta.env.VITE_API_URL;
+
 
   useEffect(() => {
     async function fetchSavedExperts() {
@@ -19,12 +20,12 @@ export default function Dashboard() {
         return;
       }
       try {
-        const res = await fetch(`${API_BASE_URL}/api/auth/get-saved-experts?email=${userEmail}`);
+        const res = await fetch(`${API_URL}/api/auth/get-saved-experts?email=${userEmail}`);
         const data = await res.json();
         if (res.ok && Array.isArray(data.savedExperts)) {
           const expertDetails = await Promise.all(
             data.savedExperts.map(async (id) => {
-              const resExpert = await fetch(`${API_BASE_URL}/api/experts/${id}`);
+              const resExpert = await fetch(`${API_URL}/api/experts/${id}`);
               return resExpert.ok ? await resExpert.json() : null;
             })
           );
@@ -38,12 +39,12 @@ export default function Dashboard() {
       setLoading(false);
     }
     fetchSavedExperts();
-  }, [userEmail, API_BASE_URL]);
+  }, [userEmail, API_URL]);
 
   const handleRemoveExpert = async (expertId) => {
     setRemovingId(expertId);
     try {
-      const res = await fetch(`${API_BASE_URL}/api/auth/remove-saved-expert`, {
+      const res = await fetch(`${API_URL}/api/auth/remove-saved-expert`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: userEmail, expertId }),

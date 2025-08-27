@@ -5,6 +5,8 @@ import FadeInSection from '../animations/FadeInSection';
 import { AuthContext } from '../context/AuthContext';
 import { motion } from 'framer-motion';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function TopRightAuthBar() {
   const navigate = useNavigate();
   return (
@@ -54,12 +56,12 @@ export default function Home() {
       }
       try {
         // Fetch recent searches and get recommendations based on them
-        const recentRes = await fetch(`/api/auth/recent-searches?email=${encodeURIComponent(user.email)}`);
+        const recentRes = await fetch(`${API_URL}/api/auth/recent-searches?email=${encodeURIComponent(user.email)}`);
         const recentData = await recentRes.json();
         const searches = Array.isArray(recentData?.recentSearches) ? recentData.recentSearches : [];
         const latestSearchArr = searches.length > 0 ? [searches[0]] : [];
 
-        const recommendRes = await fetch('/api/experts/recommendations', {
+        const recommendRes = await fetch(`${API_URL}/api/experts/recommendations`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ recentSearches: latestSearchArr }),
@@ -68,7 +70,7 @@ export default function Home() {
         const recommended = Array.isArray(recommendData?.experts) ? recommendData.experts.slice(0, 3) : [];
 
         // Fetch random experts excluding recommended ones
-        const randomRes = await fetch('/api/experts');
+        const randomRes = await fetch(`${API_URL}/api/experts`);
         const allExperts = await randomRes.json();
         const shownIds = new Set(recommended.map(e => e._id ?? e.id));
         const randoms = allExperts
@@ -85,7 +87,7 @@ export default function Home() {
   }, [user]);
 
   useEffect(() => {
-    fetch('/api/experts')
+    fetch(`${API_URL}/api/experts`)
       .then(res => res.json())
       .then(data => {
         const experts = Array.isArray(data) ? [...data] : [];
@@ -99,7 +101,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    fetch('/api/domains/trending')
+    fetch(`${API_URL}/api/domains/trending`)
       .then(res => res.json())
       .then(data => setTrendingDomains(Array.isArray(data) ? data : []))
       .catch(() => setTrendingDomains([]));
@@ -180,49 +182,53 @@ export default function Home() {
               >
                 Search, filter, and connect with top verified experts in minutes, not weeks.
               </motion.p>
-              
+
               <form onSubmit={handleSearchSubmit} className={styles.searchForm}>
                 <input className={styles.searchInput} type="text" placeholder="Search for experts, domains..." value={search} onChange={e => setSearch(e.target.value)} />
                 <button type="submit" className={styles.searchButton}>🔍</button>
               </form>
               <div className={styles.quickFilters}>
                 {['AI', 'Frontend', 'Data Scientist', 'DevOps', 'UI/UX'].map(domain => (
-                  <button key={domain} className={`${styles.filterChip} ${filterDomain === domain ? styles.activeChip : ''}`} onClick={() => onFilterChipClick(domain)}>
+                  <button
+                    key={domain}
+                    className={`${styles.filterChip} ${filterDomain === domain ? styles.activeChip : ''}`}
+                    onClick={() => onFilterChipClick(domain)}
+                  >
                     {domain}
                   </button>
                 ))}
               </div>
             </div>
             {/* image */}
-            <motion.div 
+            <motion.div
               className={styles.heroRight}
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <div className={styles.heroImageContainer}>
-                <motion.img 
-                  src="/illustrations/hero-illustration.svg" 
-                  alt="Hero Illustration" 
+                <motion.img
+                  src="/illustrations/hero-illustration.svg"
+                  alt="Hero Illustration"
                   className={styles.heroImg}
-                  animate={{ 
+                  animate={{
                     y: [0, -10, 0],
                     rotate: [0, 1, 0]
                   }}
-                  transition={{ 
+                  transition={{
                     duration: 6,
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
                 />
                 <div className={styles.floatingElements}>
-                  <motion.div 
+                  <motion.div
                     className={styles.floatingElement}
-                    animate={{ 
+                    animate={{
                       y: [0, -20, 0],
                       opacity: [0.5, 1, 0.5]
                     }}
-                    transition={{ 
+                    transition={{
                       duration: 3,
                       repeat: Infinity,
                       delay: 0
@@ -230,13 +236,13 @@ export default function Home() {
                   >
                     💼
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className={styles.floatingElement}
-                    animate={{ 
+                    animate={{
                       y: [0, -15, 0],
                       opacity: [0.7, 1, 0.7]
                     }}
-                    transition={{ 
+                    transition={{
                       duration: 4,
                       repeat: Infinity,
                       delay: 1
@@ -244,13 +250,13 @@ export default function Home() {
                   >
                     🚀
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className={styles.floatingElement}
-                    animate={{ 
+                    animate={{
                       y: [0, -25, 0],
                       opacity: [0.6, 1, 0.6]
                     }}
-                    transition={{ 
+                    transition={{
                       duration: 5,
                       repeat: Infinity,
                       delay: 2
@@ -261,9 +267,8 @@ export default function Home() {
                 </div>
               </div>
             </motion.div>
-          
-        </section>
-          
+
+          </section>
         </FadeInSection>
 
         {/* Show 3D video when logged out */}
@@ -295,8 +300,9 @@ export default function Home() {
                       <p><strong>Domain:</strong> {featuredExpert.domain}</p>
                       <p><strong>Location:</strong> {featuredExpert.location}</p>
                       <p>{featuredExpert.bio || 'Expert in their domain.'}</p>
-                      <button className={styles.viewProfileButton} onClick={() => navigate(`/experts/${featuredExpert._id ?? featuredExpert.id}`)} style={{ cursor: 'pointer' }} title={`View ${featuredExpert.name}`}>View Profile</button>
-
+                      <button className={styles.viewProfileButton} onClick={() => navigate(`/experts/${featuredExpert._id ?? featuredExpert.id}`)} style={{ cursor: 'pointer' }} title={`View ${featuredExpert.name}`}>
+                        View Profile
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -316,70 +322,68 @@ export default function Home() {
 
         {/* Recommended Experts */}
         {user && (
-  <FadeInSection>
-    <section className={styles.recommended}>
-      <div style={{ fontSize: '1.3rem' }}>
-        <b>Recommended Experts</b>
-      </div>
-
-      {/* Animated center-expand gradient line */}
-      <motion.div
-        className={styles.recommendLine}
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: 1 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        style={{ transformOrigin: 'center' }}
-      />
-
-      <div className={styles.expertsGrid}>
-        {recommendedExperts.map(exp => (
-          <div
-            key={exp._id ?? exp.id}
-            className={styles.expertCard}
-            onClick={() => navigate(`/experts/${exp._id ?? exp.id}`)}
-            style={{ cursor: 'pointer' }}
-            title={`View ${exp.name}`}
-          >
-            {exp.avatar ? (
-              <img src={exp.avatar} alt={exp.name} className={styles.avatarMedium} />
-            ) : (
-              <div className={`${styles.avatarMedium} ${styles.initialsCircle}`}>
-                {exp.name?.[0] || '?'}
+          <FadeInSection>
+            <section className={styles.recommended}>
+              <div style={{ fontSize: '1.3rem' }}>
+                <b>Recommended Experts</b>
               </div>
-            )}
-            <div className={styles.expertInfo}>
-              <div className={styles.nameRow}>
-                <span className={styles.expertName}>{exp.name}</span>
-                <span className={styles.domainBadge}>{capitalizeWords(exp.domain)}</span>
+
+              {/* Animated center-expand gradient line */}
+              <motion.div
+                className={styles.recommendLine}
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+                style={{ transformOrigin: 'center' }}
+              />
+
+              <div className={styles.expertsGrid}>
+                {recommendedExperts.map(exp => (
+                  <div
+                    key={exp._id ?? exp.id}
+                    className={styles.expertCard}
+                    onClick={() => navigate(`/experts/${exp._id ?? exp.id}`)}
+                    style={{ cursor: 'pointer' }}
+                    title={`View ${exp.name}`}
+                  >
+                    {exp.avatar ? (
+                      <img src={exp.avatar} alt={exp.name} className={styles.avatarMedium} />
+                    ) : (
+                      <div className={`${styles.avatarMedium} ${styles.initialsCircle}`}>
+                        {exp.name?.[0] || '?'}
+                      </div>
+                    )}
+                    <div className={styles.expertInfo}>
+                      <div className={styles.nameRow}>
+                        <span className={styles.expertName}>{exp.name}</span>
+                        <span className={styles.domainBadge}>{capitalizeWords(exp.domain)}</span>
+                      </div>
+                      <div className={styles.locationRow}>{exp.location}</div>
+                    </div>
+
+                    {exp.linkedin_url && (
+                      <a
+                        href={exp.linkedin_url}
+                        className={styles.linkedinLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="LinkedIn"
+                        onClick={e => e.stopPropagation()}
+                      >
+                        LinkedIn
+                      </a>
+                    )}
+                  </div>
+                ))}
               </div>
-              <div className={styles.locationRow}>{exp.location}</div>
-            </div>
-
-            {exp.linkedin_url && (
-              <a
-                href={exp.linkedin_url}
-                className={styles.linkedinLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="LinkedIn"
-                onClick={e => e.stopPropagation()}
-              >
-                LinkedIn
-              </a>
-            )}
-          </div>
-        ))}
-      </div>
-    </section>
-  </FadeInSection>
-)}
-
+            </section>
+          </FadeInSection>
+        )}
 
         {/* Trending Domains */}
-      
         <FadeInSection>
           <motion.section className={styles.trendingSection}>
-            <motion.h2 
+            <motion.h2
               className={styles.sectionTitle}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -387,41 +391,39 @@ export default function Home() {
               <span className={styles.titleIcon}>🔥</span>
               Trending Domains
             </motion.h2>
-            <motion.div 
+            <motion.div
               className={styles.domainsContainer}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              <motion.div 
+              <motion.div
                 className={styles.slider}
                 drag="x"
                 dragConstraints={{ left: -200, right: 0 }}
               >
                 {trendingDomains.map((domain, index) => (
-                  <motion.div 
+                  <motion.div
                     key={domain.id ?? domain.name}
                     className={styles.domainCard}
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                  
                     whileTap={{ scale: 0.95 }}
                   >
-                    <motion.span 
+                    <motion.span
                       className={styles.domainIcon}
                       animate={{ rotate: [0, 100, -100, 0] }}
-                      transition={{ 
+                      transition={{
                         duration: 5,
                         repeat: Infinity,
                         repeatDelay: 2
-                
                       }}
                     >
                       {domain.icon}
                     </motion.span>
                     <span className={styles.domainName}>{domain.name}</span>
-                    
+
                   </motion.div>
                 ))}
               </motion.div>
@@ -429,39 +431,42 @@ export default function Home() {
           </motion.section>
         </FadeInSection>
 
-         {/* Trending Experts */}
-        <FadeInSection>
-          <section className={styles.trendingExpertsSection}>
-            <h2><b>Trending Experts</b></h2>
-            <div className={styles.trendingGrid}>
-              {[0, 1, 2].map((offset, idx) => {
-                const expert = trendingExperts[(carouselIndex + offset) % trendingExperts.length];
-                return expert ? (
-                <div key={expert._id ?? expert.id} className={`${styles.trendingExpertCard} ${idx === 1 ? styles.highlightedCard : ''}`} style={{ cursor: 'pointer' }} onClick={() => navigate(`/experts/${expert._id ?? expert.id}`)} title={`View ${expert.name}`}>
-                    {expert.avatar ? <img src={expert.avatar} alt={expert.name} className={styles.avatarMedium} /> : <div className={`${styles.avatarMedium} ${styles.initialsCircle}`}>{expert.name?.[0] || '?'}</div>}
-                    <div>
-                      <div className={styles.expertName}>{expert.name}</div>
-                      <div className={styles.expertDomain}>{expert.domain}</div>
+        {/* Trending Experts */}
+        <FadeInSection>
+          <section className={styles.trendingExpertsSection}>
+            <h2><b>Trending Experts</b></h2>
+            <div className={styles.trendingGrid}>
+              {[0, 1, 2].map((offset, idx) => {
+                const expert = trendingExperts[(carouselIndex + offset) % trendingExperts.length];
+                return expert ? (
+                  <div
+                    key={expert._id ?? expert.id}
+                    className={`${styles.trendingExpertCard} ${idx === 1 ? styles.highlightedCard : ''}`}
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => navigate(`/experts/${expert._id ?? expert.id}`)}
+                    title={`View ${expert.name}`}
+                  >
+                    {expert.avatar ? <img src={expert.avatar} alt={expert.name} className={styles.avatarMedium} /> : <div className={`${styles.avatarMedium} ${styles.initialsCircle}`}>{expert.name?.[0] || '?'}</div>}
+                    <div>
+                      <div className={styles.expertName}>{expert.name}</div>
+                      <div className={styles.expertDomain}>{expert.domain}</div>
                       {idx === 1 && (
-              <div className={styles.trendingBadge}>
-                <span className={styles.trendingIcon}>🔥</span>
-                
-              </div>
-            )}
-                    </div>
-                  </div>
-                ) : null;
-              })}
-            </div>
-          </section>
-        </FadeInSection>
-
-
+                        <div className={styles.trendingBadge}>
+                          <span className={styles.trendingIcon}>🔥</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ) : null;
+              })}
+            </div>
+          </section>
+        </FadeInSection>
 
         {/* What Our Users Say - Testimonials */}
         <FadeInSection>
           <section className={styles.testimonials}>
-            <div style={{fontSize: '1.3rem'}}><b>What Our Users Say</b></div>
+            <div style={{ fontSize: '1.3rem' }}><b>What Our Users Say</b></div>
             <div className={styles.testimonialGrid}>
               {testimonials.map(t => (
                 <div key={t.id} className={styles.testimonialCard}>
@@ -481,12 +486,11 @@ export default function Home() {
                 animate={{ rotate: [0, 360] }}
                 transition={{ duration: 2, repeat: Infinity }}
                 style={{ display: 'inline-block', marginRight: '8px' }}
-               >
+              >
                 🚀
               </motion.span>
-            Can’t find your expert? Request help
+              Can’t find your expert? Request help
             </button>
-
           </section>
         </FadeInSection>
       </div>

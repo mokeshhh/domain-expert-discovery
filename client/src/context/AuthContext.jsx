@@ -15,7 +15,9 @@ export function AuthProvider({ children }) {
       return;
     }
 
-    fetch(`/api/auth/me?email=${encodeURIComponent(email)}`, {
+    const API_URL = import.meta.env.VITE_API_URL;
+
+    fetch(`${API_URL}/api/auth/me?email=${encodeURIComponent(email)}`, {
       headers: { 'Authorization': `Bearer ${token}` },
     })
     .then(res => (res.ok ? res.json() : null))

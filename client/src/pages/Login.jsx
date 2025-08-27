@@ -1,14 +1,14 @@
 import React, { useState, useContext } from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../utils/auth';
 import { AuthContext } from '../context/AuthContext';
 import './Login.css';
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Login() {
   const { updateUser } = useContext(AuthContext);
   const navigate = useNavigate();
-
   // "login" or "reset"
   const [mode, setMode] = useState('login');
   const [formData, setFormData] = useState({
@@ -29,7 +29,7 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -39,15 +39,12 @@ export default function Login() {
       });
       const data = await res.json();
       if (res.ok) {
-       sessionStorage.setItem('authToken', data.token);
+        sessionStorage.setItem('authToken', data.token);
         sessionStorage.setItem('email', data.email);
         sessionStorage.setItem('name', data.name);
         updateUser({ name: data.name, email: data.email });
-
-
         // Set flag to show welcome message on next page load
         sessionStorage.setItem("justLoggedIn", "yes");
-
         navigate('/');
       } else {
         setError(data.message || 'Login failed. Please check your credentials.');
@@ -67,7 +64,7 @@ export default function Login() {
       return;
     }
     try {
-      const res = await fetch('/api/auth/reset-password', {
+      const res = await fetch(`${API_URL}/api/auth/reset-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -92,21 +89,19 @@ export default function Login() {
   const handleGoogleLoginSuccess = async resp => {
     const token = resp.credential;
     try {
-      const res = await fetch('/api/auth/google-login', {
+      const res = await fetch(`${API_URL}/api/auth/google-login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token }),
       });
       const data = await res.json();
       if (res.ok) {
-         sessionStorage.setItem('authToken', token);
+        sessionStorage.setItem('authToken', token);
         sessionStorage.setItem('email', data.email);
         sessionStorage.setItem('name', data.name);
         updateUser({ name: data.name, email: data.email });
-
         // Set flag to show welcome message on next page load
         sessionStorage.setItem("justLoggedIn", "yes");
-
         navigate('/');
       } else {
         setError(data.message || 'Google login failed. Please try again.');
@@ -142,11 +137,9 @@ export default function Login() {
             </p>
           )}
         </div>
-
         {error && (
           <div className="error-message">{error}</div>
         )}
-
         <form
           className="login-form"
           onSubmit={mode === 'login' ? handleEmailLogin : handleReset}
@@ -170,7 +163,6 @@ export default function Login() {
               required
             />
           </div>
-
           <div className="input-group">
             <label
               className={`input-label ${
@@ -190,7 +182,6 @@ export default function Login() {
               required
             />
           </div>
-
           {mode === 'reset' && (
             <div className="input-group">
               <label
@@ -214,7 +205,6 @@ export default function Login() {
               />
             </div>
           )}
-
           <div className="form-options">
             {mode === 'login' && (
               <label className="checkbox-container">
@@ -233,7 +223,6 @@ export default function Login() {
               {mode === 'login' ? 'Forgot password?' : 'Back to login'}
             </span>
           </div>
-
           <button
             type="submit"
             className="login-button"
@@ -248,7 +237,6 @@ export default function Login() {
               : 'Reset password'}
           </button>
         </form>
-
         {mode === 'login' && (
           <>
             <div className="divider">
