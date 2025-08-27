@@ -1,0 +1,119 @@
+:splash-screen {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5vh;
+  z-index: 10000;
+}
+
+.splash-animation {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  margin-bottom: 2rem;
+}
+
+.card {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #667eea, #4f46e5);
+  border-radius: 8px;
+  opacity: 0.8;
+}
+
+.card1 { left: 0; animation: bounce1 1.1s ease-in-out infinite; }
+.card2 { left: 70px; animation: bounce2 1.2s ease-in-out infinite; }
+.card3 { left: 140px; animation: bounce3 1.3s ease-in-out infinite; }
+
+@keyframes bounce1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+@keyframes bounce2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
+}
+@keyframes bounce3 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-25px); }
+}
+
+.splash-title {
+  font-size: 3rem;
+  
+  font-weight: 900;
+  background: linear-gradient(90deg, #77d1f2 0%, #4689b6 45%, #2a1dc0 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.1em;
+  word-spacing: 0.3em;
+  text-align: center;
+
+  animation: fadeScaleIn 1.2s ease forwards;
+}
+
+.highlight-expert {
+  display: inline-block;
+  background: linear-gradient(90deg, #77d1f2 0%, #4689b6 45%, #2a1dc0 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: pulseExpert 2s ease-in-out 1;
+  
+}
+
+@keyframes fadeScaleIn {
+  0% { opacity: 0; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Pulse the Expert word */
+@keyframes pulseExpert {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+}
+
+.splash-subtitle {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  color: #555;
+  font-weight: 500;
+  opacity: 0;
+  animation: fadeIn 1.5s ease 1.6s forwards;
+  text-align: center;
+}
+
+/* Smooth fade and scale in */
+@keyframes fadeScaleIn {
+  0% { opacity: 0; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.animation-container {
+  margin-top: -5rem;
+  margin-bottom: -1rem;
+  opacity: 0;
+  /* New animation: fade in, move up, and scale up */
+  animation: moveUpScale 0.8s ease-out 0.2s forwards;
+}
+
+@keyframes moveUpScale {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1.3);
+  }
+}

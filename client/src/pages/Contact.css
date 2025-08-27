@@ -1,0 +1,178 @@
+html, body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+}
+
+.contact-page {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  background: var(--bg-color);
+  color: var(--text-color);
+  text-align: center;
+}
+
+.contact-hero-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+  
+}
+
+.contact-title,
+.contact-intro {
+  text-align: left;
+  max-width: 500px;
+}
+
+.contact-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #174d4d;
+  margin-bottom: 0.5rem;
+}
+
+.contact-intro {
+  font-size: 1.1rem;
+  color: #468080;
+  line-height: 1.5;
+}
+
+.contact-illustration {
+  flex: 0 0 340px;
+  text-align: right;
+  margin-bottom: 0;
+}
+
+.contact-hero-image {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  display: inline-block;
+  
+}
+
+.contact-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  
+}
+
+.info-card {
+  background: #26616f;
+  color: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  padding: 2.5rem;
+  flex: 1 1 340px;
+  max-width: 430px;
+  text-align: left;
+}
+
+.info-card h2 {
+  margin-top: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  border-bottom: 2px solid #1b4b56;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-card p {
+  color: #cce4ed;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.info-line {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+}
+
+.form-card {
+  background: var(--card-bg);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  padding: 2.5rem;
+  flex: 1 1 340px;
+  max-width: 430px;
+  text-align: left;
+}
+
+.form-card h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.form-card p {
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.form-error {
+  color: red;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.form-success {
+  color: #25c283;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid #bcd3d8;
+  border-radius: 10px;
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  background: var(--card-bg);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #26616f;
+  outline: none;
+}
+
+.form-button {
+  width: 100%;
+  padding: 0.9rem;
+  background: linear-gradient(90deg, #26616f 60%, #25c283 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.15rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px 16px rgba(38,97,111,0.2);
+  transition: background 0.3s ease;
+}
+
+.form-button:hover {
+  background: linear-gradient(90deg, #1f4f5a 60%, #1fae87 100%);
+}

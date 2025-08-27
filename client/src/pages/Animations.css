@@ -1,0 +1,67 @@
+/* Pulse animation for search button */
+@keyframes pulse-search {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+.search-icon-btn:hover {
+  animation: pulse-search 0.6s ease-in-out;
+}
+
+/* Ripple effect for buttons */
+.ripple-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.ripple-btn:active::after {
+  width: 200%;
+  height: 200%;
+}
+
+/* Smooth transitions */
+* {
+  transition: all 0.2s ease;
+}
+
+/* Hover animations */
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+
+/* Loading */
+.loading-container {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:2rem; min-height:200px;
+}
+.loading-spinner {
+  width:2rem; height:2rem; border:4px solid #e5e7eb; border-top-color:#3b82f6;
+  border-radius:50%; margin-bottom:1rem; animation:spin 1s linear infinite;
+}
+.loading-text { color:#6b7280; font-size:1.125rem; }
+
+@keyframes spin { to { transform:rotate(360deg); } }

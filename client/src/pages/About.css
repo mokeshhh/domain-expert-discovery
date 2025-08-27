@@ -1,0 +1,393 @@
+.about-container {
+  max-width: 1010px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ---------------- HERO SECTION ---------------- */
+.hero-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px;
+}
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+.hero-subtext {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+.hero-btn {
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  background-color: #ffd700;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #333;
+  transition: transform 0.2s;
+}
+.hero-btn:hover {
+  transform: scale(1.05);
+}
+
+/* ---------------- PROBLEM SECTION ---------------- */
+.problem-section {
+  margin-bottom: 3rem;
+  background-color: #f4f6f9;
+  padding: 2rem;
+  border-radius: 12px;
+}
+.problem-heading {
+  font-size: 2rem;
+  color: #2563eb;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-align: center;
+}
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+.problem-title {
+  color: #ef4444;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.solution-title {
+  color: #10b981;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.problem-grid ul {
+  color: #4a4848;
+  line-height: 1.6;
+}
+
+/* ---------------- STUDENT JOURNEY ---------------- */
+.journey-section {
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.timeline {
+  flex: 1 1 300px;
+  min-width: 280px;
+}
+.timeline-box {
+  position: relative;
+  padding-left: 30px;
+  border-left: 3px solid #667eea;
+  margin-top: 20px;
+}
+.timeline-box:first-child {
+  margin-top: 0;
+}
+.timeline-dot {
+  position: absolute;
+  left: -9px;
+  top: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #667eea;
+}
+.timeline-dot.violet {
+  background-color: #764ba2;
+}
+.journey-story {
+  flex: 2 1 400px;
+  min-width: 320px;
+}
+.journey-title {
+  font-size: 2rem;
+  color: #1e40af;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.journey-story p {
+  color: var(--journey-story-color);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* ---------------- TEAM SECTION ---------------- */
+.team-section {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.team-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 0.6rem;
+}
+.team-subtext {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+.team-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.team-card {
+  width: 220px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  padding: 1rem;
+  cursor: default;
+  transition: transform 0.3s;
+  background: #ffffff;
+}
+.team-card:hover {
+  transform: translateY(-5px);
+}
+.team-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+.team-card h3 {
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+}
+.team-card p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+.team-role{
+  color: #1a1a1a;
+}
+
+.team-specialty {
+  color: #2563eb;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* ---------------- FEATURES SECTION ---------------- */
+.features-section {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.features-title {
+  font-size: 2rem;
+  color: #2563eb;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.features-grid {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.feature-card {
+  max-width: 200px;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(38, 70, 233, 0.2);
+  transition: transform 0.3s;
+    background-color: var(--card-bg) !important;
+  transition:background-color 0.3s ease;
+}
+.feature-card:hover {
+  transform: scale(1.05);
+}
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+.feature-title-card {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  transition:color 0.3s
+}
+.feature-desc {
+  color: var(--text-color);
+  transition:color 0.3s;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* ---------------- METRICS SECTION ---------------- */
+.metrics-section {
+  margin-bottom: 3rem;
+  background-color: #f0f4ff;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+}
+.metrics-title {
+  font-size: 2rem;
+  color: #2563eb;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.metrics-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.metrics-card {
+  flex: 1 1 150px;
+}
+.metrics-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1e40af;
+}
+.metrics-label {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+.metrics-growth {
+  font-size: 0.8rem;
+  color: #10b981;
+  font-weight: 600;
+}
+
+/* ---------------- ROADMAP SECTION ---------------- */
+.roadmap-section {
+  margin-bottom: 3rem;
+}
+.roadmap-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.roadmap-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+}
+.roadmap-card {
+  min-width: 240px;
+  background-color: #ebf4ff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(38, 70, 233, 0.15);
+  cursor: default;
+  transition: transform 0.3s;
+}
+.roadmap-card:hover {
+  transform: translateY(-3px);
+}
+.roadmap-quarter {
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 8px;
+}
+.roadmap-milestone {
+  font-size: 1.1rem;
+  color: #344054;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.roadmap-desc {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* ---------------- CTA ---------------- */
+.cta {
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+.cta-subtext {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.cta-btn {
+  background-color: #ffd700;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  color: #1e293b;
+  transition: transform 0.2s;
+}
+.cta-btn:hover {
+  transform: scale(1.05);
+}
+.cta-btn-outline {
+  background-color: rgba(255,255,255,0.2);
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  border: 2px solid white;
+  cursor: pointer;
+  color: white;
+  transition: all 0.2s;
+}
+.cta-btn-outline.hovered {
+  background-color: white;
+  color: #764ba2;
+  cursor: default;
+}
+
+/* ---------------- FOOTER ---------------- */
+.footer {
+  text-align: center;
+  color: #4b5563;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border-radius: 2px;
+  
+}
+.footer a {
+  color: #2563eb;
+  text-decoration: underline;
+}
+.footer-quote {
+  margin-top: 1rem;
+  font-style: italic;
+  color: #6b7280;
+}

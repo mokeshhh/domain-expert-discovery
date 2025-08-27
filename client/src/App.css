@@ -1,0 +1,185 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.split-letter {
+  will-change: transform, opacity;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+
+body {
+  background: #8b5cf6;   /* Replace with your desired purple hex */
+}
+
+.page {
+  background: #f9fafd;
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  padding: 60px 0 30px 0;
+  background: white;
+}
+
+.searchForm {
+  display: flex;
+  border-radius: 40px;
+  box-shadow: 0 2px 16px #eeeff4;
+  overflow: hidden;
+  width: 480px;
+  background: white;
+}
+
+.searchInput {
+  flex: 1;
+  font-size: 1.2rem;
+  padding: 16px 24px;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.searchButton {
+  background: #2124d8;
+  color: white;
+  font-size: 1.3rem;
+  padding: 0 26px;
+  border: none;
+  cursor: pointer;
+}
+
+.recommended {
+  margin: 32px auto;
+  max-width: 980px;
+}
+
+.expertsRow {
+  display: flex;
+  gap: 36px;
+  justify-content: center;
+}
+
+.expertCard {
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 1px 8px #e5e7ea;
+  padding: 30px 22px;
+  width: 220px;
+  text-align: center;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+.loc {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 2px;
+}
+
+.trendingArea {
+  display: flex;
+  gap: 48px;
+  max-width: 1120px;
+  margin: 44px auto;
+  flex-wrap: wrap;
+}
+
+.trendingSection {
+  flex: 1;
+  min-width: 280px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 1px 12px #eceef0;
+  padding: 18px;
+}
+
+.domainSlider {
+  display: flex;
+  gap: 26px;
+  overflow-x: auto;
+  align-items: center;
+}
+
+.domainCard {
+  background: #228fff12;
+  border-radius: 12px;
+  padding: 14px 24px;
+  font-weight: 500;
+  font-size: 1.06rem;
+  color: #228fff;
+  white-space: nowrap;
+}
+
+.expertSlider {
+  display: flex;
+  gap: 26px;
+  overflow-x: auto;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.trendExpertCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px #dbdde0;
+  padding: 10px 14px;
+  width: 160px;
+  text-align: center;
+}
+
+.avatarSmall {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+

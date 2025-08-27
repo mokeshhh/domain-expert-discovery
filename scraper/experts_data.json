@@ -1,0 +1,502 @@
+[
+  {
+    "name": "Jeremy Allaire",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Jeremy_Allaire"
+  },
+  {
+    "name": "Dean Allen",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Dean_Allen"
+  },
+  {
+    "name": "Rachel Andrew",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Rachel_Andrew"
+  },
+  {
+    "name": "Jeremy Ashkenas",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Jeremy_Ashkenas"
+  },
+  {
+    "name": "Jeff Atwood",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Jeff_Atwood"
+  },
+  {
+    "name": "Sergey Brin",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Sergey_Brin"
+  },
+  {
+    "name": "Dries Buytaert",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Dries_Buytaert"
+  },
+  {
+    "name": "Robert Cailliau",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Robert_Cailliau"
+  },
+  {
+    "name": "Tantek Çelik",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Tantek_%C3%87elik"
+  },
+  {
+    "name": "Henrik Ræder Clausen",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Henrik_R%C3%A6der_Clausen"
+  },
+  {
+    "name": "Dan Connolly (computer scientist)",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Dan_Connolly_(computer_scientist)"
+  },
+  {
+    "name": "Blaine Cook (programmer)",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Blaine_Cook_(programmer)"
+  },
+  {
+    "name": "Douglas Crockford",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Douglas_Crockford"
+  },
+  {
+    "name": "Leah Culver",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Leah_Culver"
+  },
+  {
+    "name": "Joost de Valk",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Joost_de_Valk"
+  },
+  {
+    "name": "Brendan Eich",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Brendan_Eich"
+  },
+  {
+    "name": "Barak Eilam",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Barak_Eilam"
+  },
+  {
+    "name": "Lars Eilebrecht",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Lars_Eilebrecht"
+  },
+  {
+    "name": "Roy Fielding",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Roy_Fielding"
+  },
+  {
+    "name": "David Filo",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/David_Filo"
+  },
+  {
+    "name": "Nick Finck",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Nick_Finck"
+  },
+  {
+    "name": "Brad Fitzpatrick",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Brad_Fitzpatrick"
+  },
+  {
+    "name": "Cheryl Fuerte",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Cheryl_Fuerte"
+  },
+  {
+    "name": "Jesse James Garrett",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Jesse_James_Garrett"
+  },
+  {
+    "name": "Rumeysa Gelgi",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Rumeysa_Gelgi"
+  },
+  {
+    "name": "John Gilmore (activist)",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/John_Gilmore_(activist)"
+  },
+  {
+    "name": "Noah Glass",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Noah_Glass"
+  },
+  {
+    "name": "Daniel Glazman",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Daniel_Glazman"
+  },
+  {
+    "name": "Zak Greant",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Zak_Greant"
+  },
+  {
+    "name": "Jean-François Groff",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Jean-Fran%C3%A7ois_Groff"
+  },
+  {
+    "name": "Dirk-Willem van Gulik",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Dirk-Willem_van_Gulik"
+  },
+  {
+    "name": "Andi Gutmans",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Andi_Gutmans"
+  },
+  {
+    "name": "Kristina Halvorson",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Kristina_Halvorson"
+  },
+  {
+    "name": "David Heinemeier Hansson",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/David_Heinemeier_Hansson"
+  },
+  {
+    "name": "Cal Henderson",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Cal_Henderson"
+  },
+  {
+    "name": "Andy Hertzfeld",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Andy_Hertzfeld"
+  },
+  {
+    "name": "Adrian Holovaty",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Adrian_Holovaty"
+  },
+  {
+    "name": "Molly Holzschlag",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Molly_Holzschlag"
+  },
+  {
+    "name": "Tim Howes",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Tim_Howes"
+  },
+  {
+    "name": "Steve Huffman",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Steve_Huffman"
+  },
+  {
+    "name": "Hundred Rabbits",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Hundred_Rabbits"
+  },
+  {
+    "name": "Paul Irish",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Paul_Irish"
+  },
+  {
+    "name": "Jeremy Johnson (entrepreneur)",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Jeremy_Johnson_(entrepreneur)"
+  },
+  {
+    "name": "Jeremy Keith (web developer)",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Jeremy_Keith_(web_developer)"
+  },
+  {
+    "name": "Imran Khan (web developer)",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Imran_Khan_(web_developer)"
+  },
+  {
+    "name": "Glyph Lefkowitz",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Glyph_Lefkowitz"
+  },
+  {
+    "name": "Rasmus Lerdorf",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Rasmus_Lerdorf"
+  },
+  {
+    "name": "Håkon Wium Lie",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/H%C3%A5kon_Wium_Lie"
+  },
+  {
+    "name": "Chris Lilley (computer scientist)",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Chris_Lilley_(computer_scientist)"
+  },
+  {
+    "name": "Hampton Lintorn-Catlin",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Hampton_Lintorn-Catlin"
+  },
+  {
+    "name": "Mike Little",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Mike_Little"
+  },
+  {
+    "name": "Karen McGrane",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Karen_McGrane"
+  },
+  {
+    "name": "Eric A. Meyer",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Eric_A._Meyer"
+  },
+  {
+    "name": "Norman Meyrowitz",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Norman_Meyrowitz"
+  },
+  {
+    "name": "Jared Morgenstern",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Jared_Morgenstern"
+  },
+  {
+    "name": "Matt Mullenweg",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Matt_Mullenweg"
+  },
+  {
+    "name": "Mehvish Mushtaq",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Mehvish_Mushtaq"
+  },
+  {
+    "name": "Olalekan Olude",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Olalekan_Olude"
+  },
+  {
+    "name": "Oluseun Onigbinde",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Oluseun_Onigbinde"
+  },
+  {
+    "name": "Tayo Oviosu",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Tayo_Oviosu"
+  },
+  {
+    "name": "David Recordon",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/David_Recordon"
+  },
+  {
+    "name": "Eric Reiss",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Eric_Reiss"
+  },
+  {
+    "name": "John Resig",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/John_Resig"
+  },
+  {
+    "name": "Jeff Robbins",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Jeff_Robbins"
+  },
+  {
+    "name": "Armin Ronacher",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Armin_Ronacher"
+  },
+  {
+    "name": "Justin Rosenstein",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Justin_Rosenstein"
+  },
+  {
+    "name": "Blake Ross",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Blake_Ross"
+  },
+  {
+    "name": "Kenny Sahr",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Kenny_Sahr"
+  },
+  {
+    "name": "Cher Scarlett",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Cher_Scarlett"
+  },
+  {
+    "name": "Christopher Schmitt",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Christopher_Schmitt"
+  },
+  {
+    "name": "Zed Shaw",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Zed_Shaw"
+  },
+  {
+    "name": "Dave Shea (web designer)",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Dave_Shea_(web_designer)"
+  },
+  {
+    "name": "Jen Simmons",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Jen_Simmons"
+  },
+  {
+    "name": "Jared Spool",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Jared_Spool"
+  },
+  {
+    "name": "Lisa Strausfeld",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Lisa_Strausfeld"
+  },
+  {
+    "name": "Seni Sulyman",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Seni_Sulyman"
+  },
+  {
+    "name": "Zeev Suraski",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Zeev_Suraski"
+  },
+  {
+    "name": "Gottfrid Svartholm",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Gottfrid_Svartholm"
+  },
+  {
+    "name": "Bosun Tijani",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Bosun_Tijani"
+  },
+  {
+    "name": "Gina Trapani",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Gina_Trapani"
+  },
+  {
+    "name": "Lea Verou",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Lea_Verou"
+  },
+  {
+    "name": "Why the lucky stiff",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Why_the_lucky_stiff"
+  },
+  {
+    "name": "Simon Willison",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Simon_Willison"
+  },
+  {
+    "name": "Jeremy Zawodny",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Jeremy_Zawodny"
+  },
+  {
+    "name": "Jeffrey Zeldman",
+    "domain": "Web Developers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Jeffrey_Zeldman"
+  },
+  {
+    "name": "Artificial intelligence researchers by nationality",
+    "domain": "AI Researchers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Category:Artificial_intelligence_researchers_by_nationality"
+  },
+  {
+    "name": "Artificial intelligence ethicists",
+    "domain": "AI Researchers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Category:Artificial_intelligence_ethicists"
+  },
+  {
+    "name": "Fellows of the Association for the Advancement of Artificial Intelligence",
+    "domain": "AI Researchers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Category:Fellows_of_the_Association_for_the_Advancement_of_Artificial_Intelligence"
+  },
+  {
+    "name": "Fellows of the European Association for Artificial Intelligence",
+    "domain": "AI Researchers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Category:Fellows_of_the_European_Association_for_Artificial_Intelligence"
+  },
+  {
+    "name": "Fellows of the SSAISB",
+    "domain": "AI Researchers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Category:Fellows_of_the_SSAISB"
+  },
+  {
+    "name": "AI legal scholars",
+    "domain": "AI Researchers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Category:AI_legal_scholars"
+  },
+  {
+    "name": "Logic programming researchers",
+    "domain": "AI Researchers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Category:Logic_programming_researchers"
+  },
+  {
+    "name": "Machine learning researchers",
+    "domain": "AI Researchers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Category:Machine_learning_researchers"
+  },
+  {
+    "name": "Natural language processing researchers",
+    "domain": "AI Researchers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Category:Natural_language_processing_researchers"
+  },
+  {
+    "name": "AI safety scientists",
+    "domain": "AI Researchers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Category:AI_safety_scientists"
+  },
+  {
+    "name": "Speech processing researchers",
+    "domain": "AI Researchers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Category:Speech_processing_researchers"
+  },
+  {
+    "name": "Software engineers by nationality",
+    "domain": "Software Engineers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Category:Software_engineers_by_nationality"
+  },
+  {
+    "name": "Fictional software engineers",
+    "domain": "Software Engineers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Category:Fictional_software_engineers"
+  },
+  {
+    "name": "Software engineering researchers",
+    "domain": "Software Engineers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Category:Software_engineering_researchers"
+  },
+  {
+    "name": "Software testing people",
+    "domain": "Software Engineers",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Category:Software_testing_people"
+  }
+]

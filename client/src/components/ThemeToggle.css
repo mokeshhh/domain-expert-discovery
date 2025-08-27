@@ -1,0 +1,59 @@
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  background: var(--theme-toggle-bg, #f3f4f6);
+  border: none;
+  border-radius: 99px;
+  padding: 8px 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  cursor: pointer;
+  transition: background 0.22s, box-shadow 0.22s, transform 0.19s;
+  outline: none;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #18181b;
+  width: 100%;
+  min-width: 120px;
+  margin: 7px 0;
+  /* For pill look */
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+}
+
+.theme-toggle-btn:hover {
+  background: #e0e7ff;
+  color: #2563eb;
+}
+
+.theme-toggle-label {
+  margin-right: 5px;
+  transition: color 0.19s;
+}
+
+.theme-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.theme-toggle-btn:active .theme-toggle-icon,
+.theme-toggle-btn:hover .theme-toggle-icon {
+  transform: rotate(-35deg) scale(1.06);
+}
+
+.theme-icon {
+  transition: filter 0.22s, fill 0.22s;
+}
+
+.dark .theme-toggle-btn {
+  background: #252527;
+  color: #e0e0e0;
+}
+.dark .theme-icon {
+  filter: drop-shadow(0 0 4px #ffc700);
+}
