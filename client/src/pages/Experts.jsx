@@ -76,7 +76,7 @@ export default function Experts() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${API_URL}/api/experts`)
+    fetch(`${API_URL}/experts`)
       .then((res) => res.json())
       .then((data) => {
         setExperts(data);
@@ -90,7 +90,7 @@ export default function Experts() {
 
   useEffect(() => {
     if (!user?.email) return setRecentSearches([]);
-    fetch(`${API_URL}/api/auth/recent-searches?email=${encodeURIComponent(user.email)}`)
+    fetch(`${API_URL}/auth/recent-searches?email=${encodeURIComponent(user.email)}`)
       .then(res => res.json())
       .then(data => setRecentSearches(data.recentSearches.slice(0,3)))
       .catch(() => setRecentSearches([]));
@@ -114,7 +114,7 @@ export default function Experts() {
 
   const saveRecent = q => {
     if (!user?.email||!q.trim()) return;
-    fetch(`${API_URL}/api/auth/save-recent-search`, {
+    fetch(`${API_URL}/auth/save-recent-search`, {
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify({email:user.email,searchQuery:q.trim()})

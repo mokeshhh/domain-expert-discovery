@@ -56,12 +56,12 @@ export default function Home() {
       }
       try {
         // Fetch recent searches and get recommendations based on them
-        const recentRes = await fetch(`${API_URL}/api/auth/recent-searches?email=${encodeURIComponent(user.email)}`);
+        const recentRes = await fetch(`${API_URL}/auth/recent-searches?email=${encodeURIComponent(user.email)}`);
         const recentData = await recentRes.json();
         const searches = Array.isArray(recentData?.recentSearches) ? recentData.recentSearches : [];
         const latestSearchArr = searches.length > 0 ? [searches[0]] : [];
 
-        const recommendRes = await fetch(`${API_URL}/api/experts/recommendations`, {
+        const recommendRes = await fetch(`${API_URL}/experts/recommendations`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ recentSearches: latestSearchArr }),
@@ -70,7 +70,7 @@ export default function Home() {
         const recommended = Array.isArray(recommendData?.experts) ? recommendData.experts.slice(0, 3) : [];
 
         // Fetch random experts excluding recommended ones
-        const randomRes = await fetch(`${API_URL}/api/experts`);
+        const randomRes = await fetch(`${API_URL}/experts`);
         const allExperts = await randomRes.json();
         const shownIds = new Set(recommended.map(e => e._id ?? e.id));
         const randoms = allExperts
@@ -87,7 +87,7 @@ export default function Home() {
   }, [user]);
 
   useEffect(() => {
-    fetch(`${API_URL}/api/experts`)
+    fetch(`${API_URL}/experts`)
       .then(res => res.json())
       .then(data => {
         const experts = Array.isArray(data) ? [...data] : [];
@@ -101,7 +101,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    fetch(`${API_URL}/api/domains/trending`)
+    fetch(`${API_URL}/domains/trending`)
       .then(res => res.json())
       .then(data => setTrendingDomains(Array.isArray(data) ? data : []))
       .catch(() => setTrendingDomains([]));

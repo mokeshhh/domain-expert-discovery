@@ -20,12 +20,12 @@ export default function Dashboard() {
         return;
       }
       try {
-        const res = await fetch(`${API_URL}/api/auth/get-saved-experts?email=${userEmail}`);
+        const res = await fetch(`${API_URL}/auth/get-saved-experts?email=${userEmail}`);
         const data = await res.json();
         if (res.ok && Array.isArray(data.savedExperts)) {
           const expertDetails = await Promise.all(
             data.savedExperts.map(async (id) => {
-              const resExpert = await fetch(`${API_URL}/api/experts/${id}`);
+              const resExpert = await fetch(`${API_URL}/experts/${id}`);
               return resExpert.ok ? await resExpert.json() : null;
             })
           );
@@ -44,7 +44,7 @@ export default function Dashboard() {
   const handleRemoveExpert = async (expertId) => {
     setRemovingId(expertId);
     try {
-      const res = await fetch(`${API_URL}/api/auth/remove-saved-expert`, {
+      const res = await fetch(`${API_URL}/auth/remove-saved-expert`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: userEmail, expertId }),

@@ -46,7 +46,7 @@ export default function ExpertDetail() {
   const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch(`${API_URL}/api/experts/${id}`)
+    fetch(`${API_URL}/experts/${id}`)
       .then(res => {
         if (!res.ok) throw new Error('Expert not found');
         return res.json();
@@ -101,8 +101,8 @@ export default function ExpertDetail() {
 
     try {
       const url = isSaved
-        ? '${API_URL}/api/auth/remove-saved-expert'
-        : '${API_URL}/api/auth/save-expert';
+        ? '${API_URL}/auth/remove-saved-expert'
+        : '${API_URL}/auth/save-expert';
       const res = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

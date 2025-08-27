@@ -9,7 +9,7 @@ function RecentSearches() {
 
   useEffect(() => {
     if (!user?.email) return;
-    fetch(`${API_URL}/api/auth/recent-searches?email=${encodeURIComponent(user.email)}`)
+    fetch(`${API_URL}/auth/recent-searches?email=${encodeURIComponent(user.email)}`)
       .then(res => res.json())
       .then(data => {
         if (data.recentSearches) setRecentSearches(data.recentSearches);

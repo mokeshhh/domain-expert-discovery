@@ -19,7 +19,7 @@ const Analytics = () => {
   
 
   useEffect(() => {
-    fetch(`${API_URL}/api/experts`)
+    fetch(`${API_URL}/experts`)
 
       .then(res => res.json())
       .then(data => {

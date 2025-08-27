@@ -29,7 +29,7 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch(`${API_URL}/api/auth/login`, {
+      const res = await fetch(`${API_URL}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -64,7 +64,7 @@ export default function Login() {
       return;
     }
     try {
-      const res = await fetch(`${API_URL}/api/auth/reset-password`, {
+      const res = await fetch(`${API_URL}/auth/reset-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -89,7 +89,7 @@ export default function Login() {
   const handleGoogleLoginSuccess = async resp => {
     const token = resp.credential;
     try {
-      const res = await fetch(`${API_URL}/api/auth/google-login`, {
+      const res = await fetch(`${API_URL}/auth/google-login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token }),

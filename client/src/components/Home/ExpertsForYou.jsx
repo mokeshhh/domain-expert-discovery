@@ -8,7 +8,7 @@ export default function ExpertsForYou({ userId }) {
   useEffect(() => {
     if (!userId) return;
 
-    fetch(`${API_URL}/api/experts/recommended?userId=${userId}`)
+    fetch(`${API_URL}/experts/recommended?userId=${userId}`)
       .then(res => res.json())
       .then(data => {
         setExperts(data);
