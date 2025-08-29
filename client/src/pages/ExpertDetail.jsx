@@ -41,8 +41,8 @@ export default function ExpertDetail() {
   const [notification, setNotification] = useState(null);
   const [notificationType, setNotificationType] = useState('success');
 
-  const isLoggedIn = !!localStorage.getItem('token');
-  const userEmail = localStorage.getItem('email');
+  const isLoggedIn = !!sessionStorage.getItem('authToken');
+  const userEmail = sessionStorage.getItem('email');
   const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {

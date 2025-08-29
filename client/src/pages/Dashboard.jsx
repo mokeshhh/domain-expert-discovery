@@ -8,7 +8,7 @@ export default function Dashboard() {
   const [viewMode, setViewMode] = useState('grid');
   const [removingId, setRemovingId] = useState(null);
 
-  const userEmail = localStorage.getItem('email');
+  const userEmail = sessionStorage.getItem('email');
   const navigate = useNavigate();
   const API_URL = import.meta.env.VITE_API_URL;
 
