@@ -378,7 +378,7 @@
 .empty-state h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-color);
   margin-bottom: 0.75rem;
 }
 

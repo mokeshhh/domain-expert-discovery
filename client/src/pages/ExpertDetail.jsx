@@ -271,7 +271,7 @@ export default function ExpertDetail() {
                   />
                   <path d="M12 6v6l4 2" stroke="#2563eb" strokeWidth="1.5" />
                 </svg>
-                External Profile
+                Github Profile
               </a>
             </p>
           )}
@@ -304,7 +304,7 @@ export default function ExpertDetail() {
         {expert.about && (
           <section>
             <h3 className="text-xl font-semibold mb-2">About</h3>
-            <p className="text-gray-800">{expert.about}</p>
+            <p className="text-black-800">{expert.about}</p>
           </section>
         )}
 
