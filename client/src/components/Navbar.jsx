@@ -112,6 +112,7 @@ function Navbar({ theme, toggleTheme }) {
           <NavLink to="/contact" className={getNavLinkClass} onClick={() => setMobileMenuOpen(false)}>
             Contact
           </NavLink>
+          
           {userLoggedIn && (
             <>
               <NavLink to="/dashboard" className={getNavLinkClass} onClick={() => setMobileMenuOpen(false)}>
@@ -121,6 +122,13 @@ function Navbar({ theme, toggleTheme }) {
                 Analytics
               </NavLink>
             </>
+          )}
+
+          {isMobileMenuOpen && !userLoggedIn && (
+          <>
+           <NavLink to="/login" className={getNavLinkClass} end onClick={() => setMobileMenuOpen(false)}>Login</NavLink>
+           <NavLink to="/register" className={getNavLinkClass} end onClick={() => setMobileMenuOpen(false)}>Register</NavLink>
+          </>     
           )}
         </div>
 

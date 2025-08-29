@@ -41,6 +41,7 @@ export default function Home() {
   const [featuredExpert, setFeaturedExpert] = useState(null);
   const [filterDomain, setFilterDomain] = useState('');
   const [carouselIndex, setCarouselIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   // Static testimonials data always present for UI
   const testimonials = [
@@ -116,12 +117,13 @@ export default function Home() {
   }, [recommendedExperts]);
 
   useEffect(() => {
-    if (trendingExperts.length < 3) return;
-    const interval = setInterval(() => {
-      setCarouselIndex(i => (i + 1) % trendingExperts.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [trendingExperts]);
+  if (trendingExperts.length < 3 || paused) return;
+  const interval = setInterval(() => {
+    setCarouselIndex(i => (i + 1) % trendingExperts.length);
+  }, 2000);
+  return () => clearInterval(interval);
+}, [trendingExperts, paused]);
+
 
   const handleSearchSubmit = e => {
     e.preventDefault();
@@ -433,7 +435,11 @@ export default function Home() {
 
         {/* Trending Experts */}
         <FadeInSection>
-          <section className={styles.trendingExpertsSection}>
+          <section
+          className={styles.trendingExpertsSection}
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          >
             <h2><b>Trending Experts</b></h2>
             <div className={styles.trendingGrid}>
               {[0, 1, 2].map((offset, idx) => {
