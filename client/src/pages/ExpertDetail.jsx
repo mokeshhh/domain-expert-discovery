@@ -56,7 +56,7 @@ export default function ExpertDetail() {
         setLoading(false);
 
         if (isLoggedIn && userEmail) {
-          fetch(`${API_URL}//api/auth/get-saved-experts?email=${userEmail}`)
+          fetch(`${API_URL}/auth/get-saved-experts?email=${userEmail}`)
             .then(res => res.json())
             .then(({ savedExperts }) => {
               setIsSaved(savedExperts?.includes(data._id) || false);
@@ -101,8 +101,8 @@ export default function ExpertDetail() {
 
     try {
       const url = isSaved
-        ? '${API_URL}/auth/remove-saved-expert'
-        : '${API_URL}/auth/save-expert';
+        ? `${API_URL}/auth/remove-saved-expert`
+        : `${API_URL}/auth/save-expert`;
       const res = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
