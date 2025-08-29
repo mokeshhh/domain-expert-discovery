@@ -514,6 +514,7 @@
 
 .trendingExpertCard.highlightedCard:hover{
    background: linear-gradient(93deg, #b3d9f2 0%, #ffffff 100%);
+   color: #000000;
 }
 
 .trendingBadge {

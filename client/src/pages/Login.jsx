@@ -125,7 +125,7 @@ export default function Login() {
       <div className="login-card">
         <div className="login-header">
           <h1 className="login-title">
-            {mode === 'login' ? 'Welcome back' : 'Reset your password'}
+            {mode === 'login' ? 'Good to have you here' : 'Reset your password'}
           </h1>
           {mode === 'login' ? (
             <p className="login-subtitle">
