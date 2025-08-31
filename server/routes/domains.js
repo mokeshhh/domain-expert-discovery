@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
 // GET /api/domains/trending - return trending domains
@@ -12,4 +12,4 @@ router.get('/trending', (req, res) => {
   ]);
 });
 
-module.exports = router;
+export default router;

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const ExpertSchema = new mongoose.Schema({
   // From Wikipedia scraper
@@ -20,4 +20,5 @@ const ExpertSchema = new mongoose.Schema({
   linkedin_url: { type: String }
 });
 
-module.exports = mongoose.model('Expert', ExpertSchema);
+const Expert = mongoose.model('Expert', ExpertSchema);
+export default Expert;

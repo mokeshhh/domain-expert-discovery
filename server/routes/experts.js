@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
+import Expert from '../models/Expert.js';
+
 const router = express.Router();
-const mongoose = require('mongoose');
-const Expert = require('../models/Expert');
 
 // GET /api/experts - Get list of all experts
 router.get('/', async (req, res) => {
@@ -13,8 +13,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// NEW - POST /api/experts/recommendations
-// Accepts recentSearches array in body and returns experts matching latest recent search or random fallback
+// POST /api/experts/recommendations
 router.post('/recommendations', async (req, res) => {
   let { recentSearches } = req.body;
   if (!Array.isArray(recentSearches)) recentSearches = [];
@@ -31,7 +30,6 @@ router.post('/recommendations', async (req, res) => {
       }).limit(5);
     }
 
-    // Fallback: if no matches or no recent searches, return 5 random experts
     if (experts.length === 0) {
       experts = await Expert.aggregate([{ $sample: { size: 5 } }]);
     }
@@ -43,7 +41,7 @@ router.post('/recommendations', async (req, res) => {
   }
 });
 
-// NEW - GET /api/experts/recommended
+// GET /api/experts/recommended
 router.get('/recommended', async (req, res) => {
   const search = req.query.query || '';
   try {
@@ -62,7 +60,7 @@ router.get('/recommended', async (req, res) => {
   }
 });
 
-// NEW - GET /api/experts/trending
+// GET /api/experts/trending
 router.get('/trending', async (req, res) => {
   try {
     const experts = await Expert.find().limit(5);
@@ -73,7 +71,7 @@ router.get('/trending', async (req, res) => {
   }
 });
 
-// Dynamic expert by ID - LAST route
+// GET /api/experts/:id - expert by ID
 router.get('/:id', async (req, res) => {
   try {
     const expert = await Expert.findById(req.params.id);
@@ -84,4 +82,4 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
