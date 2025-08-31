@@ -114,6 +114,8 @@
   z-index: 10;
 }
 
+
+
 .chatInput {
   flex: 1;
   padding: 8px 12px;
@@ -135,4 +137,38 @@
 .chatSubmitButton:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.expertCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.expertCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  background: #f8f9fa;
+}
+
+.expertCard:active {
+  transform: translateY(0);
+}
+
+
+.viewProfileText {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: 350;
+  color: #2121c8; /* or your preferred color */
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+  
 }

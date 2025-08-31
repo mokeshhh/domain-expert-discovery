@@ -37,6 +37,7 @@ router.post('/', async (req, res) => {
       'ui/ux': 'ui ux',
       'front end': 'frontend',
       'back end': 'backend',
+      'ai': 'artificial intelligence',
       // Add other mappings as needed
     };
     let normalizedInput = originalInput;
