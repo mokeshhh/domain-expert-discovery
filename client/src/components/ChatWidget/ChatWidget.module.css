@@ -33,6 +33,16 @@
   display: flex;
   flex-direction: column;
   z-index: 1220;
+   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+body.no-scroll,
+html.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
 
 .panelHeader {

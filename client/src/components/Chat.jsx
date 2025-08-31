@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
+import styles from './Chat.module.css'; // CSS Module for scoped styles
 
 export default function Chat() {
-  // Load chat history with experts from sessionStorage or initialize empty
   const [history, setHistory] = useState(() => {
     try {
       const saved = sessionStorage.getItem('chatHistory');
@@ -15,12 +15,10 @@ export default function Chat() {
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef(null);
 
-  // Persist chat history to sessionStorage on change
   useEffect(() => {
     sessionStorage.setItem('chatHistory', JSON.stringify(history));
   }, [history]);
 
-  // Scroll chat to bottom on new messages
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [history, loading]);
@@ -31,7 +29,6 @@ export default function Chat() {
     if (!message) return;
 
     setLoading(true);
-    // Add user message to history
     setHistory(prev => [...prev, { from: 'user', text: message }]);
     setInput('');
 
@@ -43,7 +40,6 @@ export default function Chat() {
       });
       const data = await res.json();
 
-      // Add AI message with its associated experts
       setHistory(prev => [
         ...prev,
         {
@@ -63,108 +59,69 @@ export default function Chat() {
   };
 
   return (
-    <div style={{ height: '100%', display: 'flex', flexDirection: 'column', backgroundColor: '#fff', color: '#23233a' }}>
-      <div style={{ flex: 1, overflowY: 'auto', padding: '24px 20px 8px' }}>
+    <div className={styles.chatContainer}>
+      <div className={styles.chatMessages}>
         {history.map((msg, idx) => (
-          <div key={idx} style={{ marginBottom: 20 }}>
-            <div style={{
-              display: 'flex',
-              justifyContent: msg.from === 'user' ? 'flex-end' : 'flex-start',
-            }}>
-              <div style={{
-                backgroundColor: msg.from === 'user' ? '#4f46e5' : '#f4f6fa',
-                color: msg.from === 'user' ? '#fff' : '#23233a',
-                padding: '10px 16px',
-                borderRadius: 12,
-                maxWidth: '70%',
-                fontSize: '1.05rem',
-                boxShadow: msg.from === 'user' ? '0 2px 8px rgba(79, 70, 229, 0.3)' : '0 1px 3px rgba(35, 35, 58, 0.08)',
-              }}>
+          <div key={idx} className={styles.chatMessage}>
+            <div
+              className={
+                msg.from === 'user' ? styles.messageRowUser : styles.messageRowAi
+              }
+            >
+              <div
+                className={
+                  msg.from === 'user' ? styles.messageBubbleUser : styles.messageBubbleAi
+                }
+              >
                 {msg.text}
               </div>
             </div>
 
-            {/* Show experts associated with this AI message */}
+            {/* Experts list */}
             {msg.from === 'ai' && msg.experts && msg.experts.length > 0 && (
-              <div style={{ marginTop: 12 }}>
-                <strong style={{ color: '#4f46e5', display: 'block', marginBottom: 8 }}>
+              <div className={styles.matchingExpertsSection}>
+                <strong className={styles.matchingExpertsTitle}>
                   Matching Experts
                 </strong>
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(2, 1fr)',
-                  gap: 16
-                }}>
+                <div className={styles.matchingExpertsGrid}>
                   {msg.experts.map(expert => (
-                    <div key={expert._id} style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 12,
-                      background: '#fff',
-                      padding: 12,
-                      borderRadius: 12,
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-                    }}>
+                    <div key={expert._id} className={styles.expertCard}>
                       <img
                         src={expert.avatar || '/assets/default-user.png'}
                         alt={expert.name}
-                        width={48}
-                        height={48}
-                        style={{ borderRadius: '50%', objectFit: 'cover' }}
+                        className={styles.expertAvatar}
                       />
                       <div>
-                        <div style={{ fontWeight: 600 }}>{expert.name}</div>
-                        <div style={{ color: '#4f46e5', fontSize: '0.9rem' }}>{expert.domain}</div>
-                        <div style={{ color: '#666', fontSize: '0.8rem' }}>{expert.location}</div>
+                        <div className={styles.expertName}>{expert.name}</div>
+                        <div className={styles.expertDomain}>{expert.domain}</div>
+                        <div className={styles.expertLocation}>{expert.location}</div>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
             )}
-
           </div>
         ))}
 
-        {loading && (
-          <div style={{ color: '#4f46e5', fontWeight: 500, marginTop: 8 }}>Loading response...</div>
-        )}
+        {loading && <div className={styles.loadingText}>Loading response...</div>}
 
         <div ref={scrollRef} />
       </div>
 
-      <form onSubmit={sendMessage} style={{
-        display: 'flex',
-        padding: 16,
-        borderTop: '1px solid #eee',
-        background: '#fafafa' ,
-        position: 'absolute',
-  bottom: 30,
-  left: 0,
-  right: 0,
-  zIndex: 10
-      }}>
+      <form className={styles.chatInputForm} onSubmit={sendMessage}>
         <input
-          style={{
-            flex: 1,
-            padding: '8px 12px',
-            borderRadius: 8,
-            border: '1px solid #ccc',
-            fontSize: '1rem'
-          }}
+          type="text"
+          className={styles.chatInput}
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={e => setInput(e.target.value)}
           placeholder="Type your message..."
         />
-        <button type="submit" disabled={loading} style={{
-          marginLeft: 8,
-          padding: '8px 16px',
-          background: '#4f46e5',
-          color: '#fff',
-          border: 'none',
-          borderRadius: 8,
-          cursor: 'pointer'
-        }}>
+        <button
+          type="submit"
+          className={styles.chatSubmitButton}
+          disabled={loading}
+        >
           Send
         </button>
       </form>
