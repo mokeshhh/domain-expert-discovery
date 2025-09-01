@@ -9,7 +9,7 @@ import { dirname } from 'path';
 import expertRoutes from './routes/experts.js';
 import domainsRoutes from './routes/domains.js';
 import authRoutes from './routes/auth.js';
-import chatRoute from './routes/chat.js'; // Your chat logic as a separate route file
+ // Your chat logic as a separate route file
 
 // __dirname replacement in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use('/api/auth', authRoutes);
 app.use('/api/experts', expertRoutes);
 app.use('/api/domains', domainsRoutes);
-app.use('/api/chat', chatRoute);  // Fireworks chat API integration here
+ // Fireworks chat API integration here
 
 // Root test route
 app.get('/', (req, res) => {

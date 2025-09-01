@@ -18,7 +18,7 @@ import PrivateRoute from './components/PrivateRoute';
 import Profile from './pages/Profile';
 import ScrollToTop from './components/ScrollToTop';
 import SplashScreen from './components/SplashScreen';  // New splash
-import ChatWidget from './components/ChatWidget/ChatWidget';
+
 
 function AppRoutes() {
   const { user, loading } = useContext(AuthContext);
@@ -81,7 +81,7 @@ function App() {
               </div>
             </div>
             
-             <ChatWidget />
+            
           </Router>
         )}
       </GoogleOAuthProvider>
