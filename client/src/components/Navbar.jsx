@@ -181,7 +181,7 @@ function Navbar({ theme, toggleTheme }) {
           ) : (
             <>
               <NavLink to="/login" className={getNavLinkClass}>Login</NavLink>
-              
+              <NavLink to="/register" className={getNavLinkClass}>Register</NavLink>
             </>
           )}
         </div>
