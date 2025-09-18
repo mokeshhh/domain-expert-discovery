@@ -5,8 +5,6 @@ import FadeInSection from '../animations/FadeInSection';
 import { AuthContext } from '../context/AuthContext';
 import { motion } from 'framer-motion';
 
-
-
 const API_URL = import.meta.env.VITE_API_URL;
 
 function TopRightAuthBar() {
