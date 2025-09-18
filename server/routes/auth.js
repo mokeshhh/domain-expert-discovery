@@ -6,14 +6,16 @@ import User from '../models/User.js';
 const router = express.Router();
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
-// Register endpoint
-router.post('/register', async (req, res) => {
+// Signup endpoint (changed from /register to /signup to match frontend)
+router.post('/signup', async (req, res) => {
   const { name, email, password } = req.body;
-  if (!name || !email || !password) return res.status(400).json({ message: 'Please fill all fields.' });
+  if (!name || !email || !password)
+    return res.status(400).json({ message: 'Please fill all fields.' });
 
   try {
     const existingUser = await User.findOne({ email });
-    if (existingUser) return res.status(409).json({ message: 'Email already registered.' });
+    if (existingUser)
+      return res.status(409).json({ message: 'Email already registered.' });
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
@@ -30,11 +32,11 @@ router.post('/register', async (req, res) => {
     res.status(201).json({ message: 'User registered successfully.' });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: 'Server error during registration.' });
+    res.status(500).json({ message: 'Server error during signup.' });
   }
 });
 
-// Login endpoint
+// Login endpoint unchanged
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -44,7 +46,7 @@ router.post('/login', async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password || '');
     if (!isMatch) return res.status(401).json({ message: 'Invalid password.' });
 
-    // Dummy token for demo; use real JWT in production
+    // Dummy token for demo; replace with real JWT in production
     const token = 'dummy-token-for-demo';
     res.json({ token, message: 'Login successful.', name: user.name, email: user.email });
   } catch (err) {
@@ -53,7 +55,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Google login endpoint
+// Google login unchanged
 router.post('/google-login', async (req, res) => {
   const { token } = req.body;
   if (!token) return res.status(400).json({ message: 'Google token is required.' });
@@ -79,7 +81,7 @@ router.post('/google-login', async (req, res) => {
       await user.save();
     }
 
-    // Dummy token for demo; use real JWT in production
+    // Dummy token for demo; replace with real JWT in production
     res.json({ token: 'dummy-google-token', name: user.name, email: user.email });
   } catch (error) {
     console.error(error);
@@ -87,7 +89,7 @@ router.post('/google-login', async (req, res) => {
   }
 });
 
-// Get logged-in user info
+// Get logged-in user info unchanged
 router.get('/me', async (req, res) => {
   const email = req.query.email || req.headers['x-user-email'];
   if (!email) return res.status(400).json({ message: 'No user email provided.' });
@@ -102,7 +104,7 @@ router.get('/me', async (req, res) => {
   }
 });
 
-// Save expert for logged-in user
+// Save expert unchanged
 router.post('/save-expert', async (req, res) => {
   const { email, expertId } = req.body;
   try {
@@ -122,7 +124,7 @@ router.post('/save-expert', async (req, res) => {
   }
 });
 
-// Get saved experts for logged-in user
+// Get saved experts unchanged
 router.get('/get-saved-experts', async (req, res) => {
   const { email } = req.query;
   try {
@@ -135,7 +137,7 @@ router.get('/get-saved-experts', async (req, res) => {
   }
 });
 
-// Remove a saved expert for logged-in user
+// Remove saved expert unchanged
 router.post('/remove-saved-expert', async (req, res) => {
   const { email, expertId } = req.body;
   try {
@@ -151,7 +153,7 @@ router.post('/remove-saved-expert', async (req, res) => {
   }
 });
 
-// Save recent search (max 10 unique)
+// Save recent search unchanged
 router.post('/save-recent-search', async (req, res) => {
   const { email, searchQuery } = req.body;
   if (!email || !searchQuery) return res.status(400).json({ message: 'Email and searchQuery are required.' });
@@ -170,7 +172,7 @@ router.post('/save-recent-search', async (req, res) => {
   }
 });
 
-// Get recent searches for user
+// Get recent searches unchanged
 router.get('/recent-searches', async (req, res) => {
   const { email } = req.query;
   if (!email) return res.status(400).json({ message: 'Email is required.' });
@@ -185,7 +187,7 @@ router.get('/recent-searches', async (req, res) => {
   }
 });
 
-// POST /api/auth/reset-password
+// Password reset updated for hashing
 router.post('/reset-password', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -198,7 +200,6 @@ router.post('/reset-password', async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    // Hash the new password using bcryptjs
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 

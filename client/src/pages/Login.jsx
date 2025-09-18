@@ -169,6 +169,7 @@ export default function Login() {
   };
 
   return (
+    <div className="login-page"> 
     <div className="login-container">
       {/* Background elements */}
       <div className="login-background">
@@ -417,6 +418,7 @@ export default function Login() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

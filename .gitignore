@@ -7,3 +7,5 @@ __pycache__/
 venv/
 
 scraper/
+server/routes/chat.js
+client/src/components/ChatWidget/
