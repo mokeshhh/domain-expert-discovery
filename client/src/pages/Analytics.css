@@ -1,3 +1,4 @@
+/* About.css */
 
 .analytics-container {
   max-width: 950px;
@@ -89,7 +90,6 @@
   font-style: italic;
   box-shadow: 0 10px 12px 0 rgba(88,116,204,0.3);
   position: relative;
-  top : 40px;
 }
 
 .analytics-spinner {
@@ -125,120 +125,4 @@
   .analytics-stat-value {
     font-size: 1.4rem;
   }
-}
-/* Filter bar styling (matches your screenshot visually) */
-.filter-bar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 24px auto 42px auto;
-  max-width: 700px;
-}
-.filter-label {
-  font-weight: 500;
-  color: #293b51;
-  font-size: 1.08rem;
-}
-.filter-select,
-.filter-input {
-  border: 1.5px solid #eee;
-  border-radius: 12px;
-  background: #fff;
-  padding: 0.55em 1em;
-  font-size: 1.03rem;
-  margin-left: 7px;
-  transition: border-color 0.16s;
-}
-.filter-input:focus,
-.filter-select:focus {
-  border-color: #5b6bfa;
-  outline: none;
-}
-.filter-btn {
-  margin-left: 14px;
-  background: #5b6bfa;
-  color: #fff;
-  font-weight: 600;
-  border: none;
-  border-radius: 11px;
-  padding: 0.65em 1.4em;
-  cursor: pointer;
-  font-size: 1.08rem;
-  box-shadow: 0 2px 9px rgba(91,107,250,0.07);
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  transition: background 0.18s;
-}
-.filter-btn:hover {
-  background: #4a4be7;
-}
-.filter-icon {
-  font-size: 1.25rem;
-  vertical-align: middle;
-}
-.analytics-row-split {
-  display: flex;
-  gap: 42px;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 16px;
-}
-.analytics-chart-col {
-  min-width: 360px;
-  max-width: 410px;
-  background: #fafbfe;
-  border-radius: 14px;
-  box-shadow: 0 3px 18px rgba(38,118,255,0.05);
-  padding: 20px 14px 18px 14px;
-  min-height: 410px;
-  height: 450px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  
-}
-
-.analytics-legend-col {
-  min-width: 180px;
-  background: #f0f5ff;
-  border-radius: 14px;
-  box-shadow: 0 3px 16px rgba(38,118,255,0.05);
-  padding: 18px 18px 18px 18px;
-  min-height: 388px;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.analytics-legend-title {
-  font-weight: bold;
-  color: #3867e3;
-  font-size: 1.1rem;
-  margin-bottom: 14px;
-  letter-spacing: 0.3px;
-}
-.analytics-legend-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.analytics-legend-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 9px;
-  gap: 10px;
-  font-size: 1.06rem;
-  color: #293b51;
-}
-.analytics-legend-color {
-  width: 20px;
-  height: 20px;
-  border-radius: 5px;
-  display: inline-block;
-  margin-right: 4px;
-}
-.analytics-legend-label {
-  font-size: 1.03rem;
-  color: #293b51;
 }
