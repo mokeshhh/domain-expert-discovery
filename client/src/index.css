@@ -24,6 +24,8 @@ html.light {
 
     --aicard-bg: #f3f3f3;
     --login-background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #cbd5e0 100%);
+    --logo-color: #283a54;
+    
 }
 
 
@@ -49,6 +51,7 @@ html.dark {
 
     --aicard-bg: #242428;
     --login-background: #1a1818;
+    --logo-color: #f5f7fa;
 }
 
 /* Apply background and text to body and main containers */

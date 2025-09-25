@@ -269,3 +269,31 @@
   0% { background-position: left center; }
   100% { background-position: right center; }
 }
+
+.brand {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #2459dd;
+}
+
+.nav-logo {
+  height: 1.6em;         /* matches nearly the text height */
+  width: auto;
+  margin-right: 0.5em;   /* small gap between logo and text */
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.brand-text {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: var(--logo-color); /* base color */
+}
+
+.highlighted-text {
+  color: #00bcd4; /* different accent color for Discovery */
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}

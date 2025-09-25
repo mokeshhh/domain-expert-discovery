@@ -7,6 +7,7 @@ import { AuthContext } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
 
+
 function Navbar({ theme, toggleTheme }) {
   const { user, clearUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -77,14 +78,17 @@ function Navbar({ theme, toggleTheme }) {
       <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
         <div className="nav-left">
           <NavLink to="/" className="brand">
-            <motion.span
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            >
-              Domain Expert Discovery
-            </motion.span>
-          </NavLink>
+  <img src="/logo.png" alt="Logo" className="nav-logo" />
+  <motion.span
+    initial={{ x: -20, opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+    className="brand-text"
+  >
+    Domain Expert <span className="highlighted-text">Discovery</span>
+  </motion.span>
+</NavLink>
+
         </div>
 
         <AnimatePresence>
