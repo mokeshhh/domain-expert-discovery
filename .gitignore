@@ -7,3 +7,6 @@ __pycache__/
 venv/
 
 scraper/
+
+client/src/components/AnimatedMascot.jsx
+client/src/components/AnimatedMascot.css
