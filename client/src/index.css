@@ -21,6 +21,9 @@ html.light {
   --domain-background: #f0f9ff;
     --domain-color: #0369a1;
     --analytics-background: #fafafa;
+
+    --aicard-bg: #f3f3f3;
+    --login-background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #cbd5e0 100%);
 }
 
 
@@ -43,6 +46,9 @@ html.dark {
     --domain-background: #242428;
     --domain-color: #e0e0e0;
     --analytics-background: #f0f4ff;
+
+    --aicard-bg: #242428;
+    --login-background: #1a1818;
 }
 
 /* Apply background and text to body and main containers */

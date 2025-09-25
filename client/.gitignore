@@ -25,3 +25,6 @@ dist-ssr
 
 # Ignore environment files
 .env
+
+Domain/client/src/pages/Analytics.jsx
+Domain/client/src/pages/Analytics.css

@@ -18,6 +18,8 @@ function Navbar({ theme, toggleTheme }) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const profileMenuRef = useRef();
+  const allowedAnalyticsEmails = ["leomokesh@gmail.com", "abc@gmail.com"];
+
 
   useEffect(() => {
     setUserLoggedIn(isLoggedIn());
@@ -118,9 +120,12 @@ function Navbar({ theme, toggleTheme }) {
               <NavLink to="/dashboard" className={getNavLinkClass} onClick={() => setMobileMenuOpen(false)}>
                 Wishlist
               </NavLink>
-              <NavLink to="/analytics" className={getNavLinkClass} onClick={() => setMobileMenuOpen(false)}>
-                Analytics
-              </NavLink>
+                  {allowedAnalyticsEmails.includes(user?.email) && (
+      <NavLink to="/analytics" className={getNavLinkClass} onClick={() => setMobileMenuOpen(false)}>
+        Analytics
+      </NavLink>
+    )}
+
             </>
           )}
 
@@ -181,7 +186,7 @@ function Navbar({ theme, toggleTheme }) {
           ) : (
             <>
               <NavLink to="/login" className={getNavLinkClass}>Login</NavLink>
-              <NavLink to="/register" className={getNavLinkClass}>Register</NavLink>
+              
             </>
           )}
         </div>

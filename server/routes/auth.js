@@ -2,12 +2,80 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import { OAuth2Client } from 'google-auth-library';
 import User from '../models/User.js';
+import crypto from 'crypto';
+import nodemailer from 'nodemailer';
 
 const router = express.Router();
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
-// Register endpoint
-router.post('/register', async (req, res) => {
+// In-memory store for verification codes (replace with DB in production)
+const verificationCodes = {};
+
+// Configure nodemailer (update with your SMTP settings and credentials)
+const transporter = nodemailer.createTransport({
+  host: process.env.EMAIL_HOST,
+  port: parseInt(process.env.EMAIL_PORT),
+  secure: process.env.EMAIL_PORT === '465', // true if port is 465, else false
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+
+// POST /auth/send-verification-code
+router.post('/send-verification-code', async (req, res) => {
+  const { email } = req.body;
+  if (!email) return res.status(400).json({ message: 'Email required.' });
+
+  try {
+    // Check if email already registered
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(409).json({ message: 'Email already registered. Please login.' });
+    }
+
+    // Generate 6-digit code
+    const code = crypto.randomInt(100000, 999999).toString();
+
+    // Store with 15 min expiration
+    verificationCodes[email] = { code, expires: Date.now() + 15 * 60 * 1000 };
+
+    // Send email with code
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: 'Your Verification Code',
+      text: `Your verification code is: ${code}. It expires in 15 minutes.`
+    });
+
+    res.json({ message: 'Verification code sent.' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Failed to send verification code.' });
+  }
+});
+
+// POST /auth/verify-code
+router.post('/verify-code', (req, res) => {
+  const { email, code } = req.body;
+  if (!email || !code) return res.status(400).json({ message: 'Email and code required.' });
+
+  const record = verificationCodes[email];
+  if (!record) return res.status(400).json({ message: 'No verification code sent for this email.' });
+
+  if (record.expires < Date.now()) {
+    delete verificationCodes[email];
+    return res.status(400).json({ message: 'Verification code expired.' });
+  }
+
+  if (record.code !== code) return res.status(400).json({ message: 'Invalid verification code.' });
+
+  delete verificationCodes[email];
+  res.json({ message: 'Verification successful.' });
+});
+
+// Register endpoint (previously "/register")
+router.post('/signup', async (req, res) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password) return res.status(400).json({ message: 'Please fill all fields.' });
 
@@ -23,7 +91,7 @@ router.post('/register', async (req, res) => {
       email,
       password: hashedPassword,
       savedExperts: [],
-      recentSearches: [],
+      recentSearches: []
     });
 
     await user.save();
@@ -61,7 +129,7 @@ router.post('/google-login', async (req, res) => {
   try {
     const ticket = await client.verifyIdToken({
       idToken: token,
-      audience: process.env.GOOGLE_CLIENT_ID,
+      audience: process.env.GOOGLE_CLIENT_ID
     });
     const payload = ticket.getPayload();
     const email = payload.email;
@@ -74,7 +142,7 @@ router.post('/google-login', async (req, res) => {
         email,
         password: '',
         savedExperts: [],
-        recentSearches: [],
+        recentSearches: []
       });
       await user.save();
     }
