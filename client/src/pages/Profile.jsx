@@ -22,7 +22,7 @@ function EditableInput({ name, value, onChange }) {
   const save = () => {
     let val = tempValue.trim();
     // Add https:// if missing for social links except phone
-    if (name !== 'phone' && val && !/^https?:\/\//i.test(val)) {
+    if (name !== 'phone' && name !== 'location' && val && !/^https?:\/\//i.test(val)) {
       val = 'https://' + val;
     }
     onChange(val);
@@ -51,21 +51,37 @@ function EditableInput({ name, value, onChange }) {
         />
       ) : (
         <>
-          <a
-            href={name === 'phone' ? undefined : value}
-            target={name === 'phone' ? undefined : '_blank'}
-            rel={name === 'phone' ? undefined : 'noopener noreferrer'}
-            style={{
-              flexGrow: 1,
-              marginRight: 10,
-              wordBreak: 'break-word',
-              color: value ? '#2563eb' : '#9caaf4',
-              fontWeight: value ? '500' : 'normal',
-              textDecoration: value ? 'underline' : 'none',
-            }}
-          >
-            {value || `Add your ${name}`}
-          </a>
+          {/* FIX: If value is empty, show a span to prevent page reload on click */}
+          {value ? (
+            <a
+              href={name === 'phone' ? `tel:${value}` : value}
+              target={name === 'phone' ? undefined : '_blank'}
+              rel={name === 'phone' ? undefined : 'noopener noreferrer'}
+              style={{
+                flexGrow: 1,
+                marginRight: 10,
+                wordBreak: 'break-word',
+                color: '#2563eb',
+                fontWeight: '500',
+                textDecoration: 'underline',
+              }}
+            >
+              {value}
+            </a>
+          ) : (
+            <span
+              onClick={() => setEditing(true)}
+              style={{
+                flexGrow: 1,
+                marginRight: 10,
+                color: '#9caaf4',
+                cursor: 'pointer',
+                fontStyle: 'italic'
+              }}
+            >
+              Add your {name}
+            </span>
+          )}
           <FaPen
             onClick={() => setEditing(true)}
             size={18}
@@ -123,10 +139,13 @@ export default function Profile() {
   const [skillInput, setSkillInput] = useState('');
 
   useEffect(() => {
+    // FIX: Pull Name and Email from sessionStorage as set in Login.jsx
     setUserInfo({
-      name: localStorage.getItem('name') || '',
-      email: localStorage.getItem('email') || '',
+      name: sessionStorage.getItem('name') || '',
+      email: sessionStorage.getItem('email') || '',
     });
+    
+    // Metadata can stay in localStorage for persistence
     setAvatar(localStorage.getItem('avatar') || null);
     setLinkedin(localStorage.getItem('linkedin') || '');
     setGithub(localStorage.getItem('github') || '');
@@ -284,7 +303,7 @@ export default function Profile() {
 
       <div style={{ maxWidth: 600, margin: 'auto' }}>
         <div style={sectionStyle}>
-          <h3>Social Media Links</h3>
+          <h3 style={{ marginBottom: '15px' }}>Social Media Links</h3>
           {['linkedin', 'github', 'twitter', 'website'].map((key) => (
             <EditableInput
               key={key}
@@ -296,7 +315,7 @@ export default function Profile() {
         </div>
 
         <div style={sectionStyle}>
-          <h3>Contact Information</h3>
+          <h3 style={{ marginBottom: '15px' }}>Contact Information</h3>
           <EditableInput name="phone" value={phone} onChange={savePhone} />
           <EditableInput name="location" value={location} onChange={saveLocation} />
           <label style={{ cursor: 'pointer', color: '#374151', marginTop: 12, display: 'block' }}>
@@ -315,7 +334,7 @@ export default function Profile() {
         </div>
 
         <div style={sectionStyle}>
-          <h3>Skills / Interests</h3>
+          <h3 style={{ marginBottom: '15px' }}>Skills / Interests</h3>
           <div>
             {skills.map((skill) => (
               <SkillTag key={skill} skill={skill} onRemove={() => removeSkill(skill)} />

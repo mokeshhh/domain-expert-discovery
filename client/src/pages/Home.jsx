@@ -414,6 +414,9 @@ export default function Home() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={() => navigate(`/experts?query=${encodeURIComponent(domain.name)}`)}
+                    style={{ cursor: 'pointer' }}
+                    whileHover={{ scale: 1.05, boxShadow: "0 8px 16px rgba(0,0,0,0.1)" }}
                   >
                     <motion.span
                       className={styles.domainIcon}
