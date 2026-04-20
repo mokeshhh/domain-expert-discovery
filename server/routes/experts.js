@@ -1,7 +1,6 @@
 import express from 'express';
 import Expert from '../models/Expert.js';
-import { spawn } from 'child_process';
-import path from 'path';
+import { runScraper } from '../scraper/githubScraper.js';
 
 const router = express.Router();
 
@@ -9,12 +8,10 @@ const router = express.Router();
 // 1. SEARCH & AUTOSCRAPE ROUTE (SESSION-BASED VISIBILITY)
 // ==========================================================================
 router.get('/search', async (req, res) => {
-  const { query, sessionId } = req.query; // Capture sessionId from frontend
+  const { query, sessionId } = req.query;
   if (!query) return res.status(400).json({ message: "No search term provided" });
 
   try {
-    // 1. Check database. 
-    // Filter: Match query AND (is NOT temporary OR belongs to THIS session)
     let experts = await Expert.find({
       $and: [
         {
@@ -25,52 +22,53 @@ router.get('/search', async (req, res) => {
         },
         {
           $or: [
-            { isTemporary: { $ne: true } }, // Visible to everyone
-            { sessionId: sessionId }        // Private to this session
+            { isTemporary: { $ne: true } },
+            { sessionId: sessionId }
           ]
         }
       ]
     });
 
-    // 2. If NO results found for this user/session, trigger the Python Scraper
     if (experts.length === 0) {
-      console.log(`🔍 No local match for "${query}". Spawning scraper for session: ${sessionId}`);
+      console.log(`🔍 No local match for "${query}". Running JS scraper for session: ${sessionId}`);
 
-      const scriptPath = path.join(process.cwd(), '..', 'scraper', 'github_scrape.py');
+      // ✅ await so scraper fully finishes before re-querying
+      await runScraper(query, sessionId || 'none');
 
-      /**
-       * FIX: We wrap scriptPath in double quotes to handle folder names with spaces.
-       * We also wrap the query to ensure multi-word searches (like "Machine Learning") 
-       * are passed as a single argument.
-       */
-      const pythonProcess = spawn('python', [`"${scriptPath}"`, `"${query}"`, sessionId || "none"], { 
-        shell: true,
-        stdio: 'inherit' 
+      // ✅ Re-query after scraper finishes — sends fresh results to frontend
+      const freshResults = await Expert.find({
+        $and: [
+          {
+            $or: [
+              { domain: { $regex: query, $options: 'i' } },
+              { name: { $regex: query, $options: 'i' } }
+            ]
+          },
+          {
+            $or: [
+              { isTemporary: { $ne: true } },
+              { sessionId: sessionId }
+            ]
+          }
+        ]
       });
 
-      pythonProcess.on('close', async (code) => {
-        console.log(`✅ Scraper process finished with exit code ${code}`);
-        
-        // Re-query: Only get results tagged for this user session
-        const freshResults = await Expert.find({
-          domain: { $regex: query, $options: 'i' },
-          sessionId: sessionId
-        });
-        
-        res.json(freshResults);
-      });
-    } else {
-      // 3. Existing results found
-      console.log(`✨ Returning ${experts.length} visible results for "${query}"`);
-      res.json(experts);
+      console.log(`📤 Sending ${freshResults.length} fresh results to frontend`);
+      return res.json(freshResults);
     }
+
+    console.log(`✨ Returning ${experts.length} visible results for "${query}"`);
+    res.json(experts);
+
   } catch (err) {
     console.error('Error in /search route:', err);
     res.status(500).json({ message: 'Server error during search' });
   }
 });
 
-// GET /api/experts - Get list of experts (Hiding temporary ones from global view)
+// ==========================================================================
+// 2. GET ALL EXPERTS (hide temporary ones from global view)
+// ==========================================================================
 router.get('/', async (req, res) => {
   try {
     const experts = await Expert.find({ isTemporary: { $ne: true } });
@@ -80,7 +78,9 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST /api/experts/recommendations (Hiding temporary ones)
+// ==========================================================================
+// 3. RECOMMENDATIONS
+// ==========================================================================
 router.post('/recommendations', async (req, res) => {
   let { recentSearches } = req.body;
   if (!Array.isArray(recentSearches)) recentSearches = [];
@@ -116,7 +116,9 @@ router.post('/recommendations', async (req, res) => {
   }
 });
 
-// GET /api/experts/recommended (Hiding temporary ones)
+// ==========================================================================
+// 4. RECOMMENDED (search-based, hide temporary)
+// ==========================================================================
 router.get('/recommended', async (req, res) => {
   const search = req.query.query || '';
   try {
@@ -138,7 +140,9 @@ router.get('/recommended', async (req, res) => {
   }
 });
 
-// GET /api/experts/trending (Hiding temporary ones)
+// ==========================================================================
+// 5. TRENDING (hide temporary)
+// ==========================================================================
 router.get('/trending', async (req, res) => {
   try {
     const experts = await Expert.find({ isTemporary: { $ne: true } }).limit(5);
@@ -149,7 +153,9 @@ router.get('/trending', async (req, res) => {
   }
 });
 
-// GET /api/experts/:id - expert by ID
+// ==========================================================================
+// 6. GET EXPERT BY ID (must be last to avoid catching other routes)
+// ==========================================================================
 router.get('/:id', async (req, res) => {
   try {
     const expert = await Expert.findById(req.params.id);

@@ -6,7 +6,11 @@ __pycache__/
 *.pyc
 venv/
 
-scraper/
+scraper/*.py
+scraper/*.log
+scraper/venv/
+scraper/__pycache__/
+scraper/experts_data.json
 
 client/src/components/AnimatedMascot.jsx
 client/src/components/AnimatedMascot.css
